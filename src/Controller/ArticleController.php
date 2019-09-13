@@ -2,23 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
-class ArticleController
+class ArticleController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/homepage", name="app_homepage")
      */
     public function homepage()
     {
-        return new Response('OMG! My first page already! WOOO!');
+        return $this->render('homepage.html.twig');
     }
+
     /**
-     * @Route("/news/why-asteroids-taste-like-bacon")
+     * @Route("/news/{slug}")
      */
-    public function show()
+    public function show($slug)
     {
-        return new Response('Future page to show one space article!');
+        return $this->render('article/show.html.twig', [
+            'title' => ucwords(str_replace('-', ' ', $slug)),
+        ]);
     }
 }
