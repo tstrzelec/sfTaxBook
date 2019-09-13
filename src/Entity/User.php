@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -38,12 +41,14 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true, options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", columnDefinition="DATETIME on update CURRENT_TIMESTAMP")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 

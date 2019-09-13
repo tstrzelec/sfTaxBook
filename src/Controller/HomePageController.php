@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class ArticleController extends AbstractController
+class HomePageController extends AbstractController
 {
     /**
      * @Route("/homepage", name="app_homepage")
