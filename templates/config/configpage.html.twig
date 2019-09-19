@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Config{% endblock %}
+
+{% block body %}
+    <h1>Config</h1>
+
+    {{ form_start(ConfigProfileForm) }}
+        {{ form_row(ConfigProfileForm.street) }}
+        {{ form_row(ConfigProfileForm.houseNo) }}
+        {{ form_row(ConfigProfileForm.postalCode) }}
+        {{ form_row(ConfigProfileForm.city) }}
+        {{ form_row(ConfigProfileForm.country) }}
+        {{ form_row(ConfigProfileForm.nipNo) }}
+        {{ form_row(ConfigProfileForm.regon) }}
+        {{ form_row(ConfigProfileForm.bankName) }}
+        {{ form_row(ConfigProfileForm.bankAccountNumber) }}
+
+        <button class="btn">Config</button>
+    {{ form_end(ConfigProfileForm) }}
+{% endblock %}
